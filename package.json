@@ -1,0 +1,39 @@
+{
+  "name": "mac-interactive-response",
+  "version": "3.0.0",
+  "engines": {
+    "node": ">= 16.13 <17"
+  },
+  "scripts": {
+    "start": "node ./dist/src/index.js",
+    "dev": "nodemon --exec ts-node ./src/index.ts",
+    "clean": "rimraf coverage build tmp",
+    "build": "tsc -p tsconfig.json",
+    "build:watch": "tsc -w -p tsconfig.json",
+    "build:release": "yarn clean && tsc -p tsconfig.release.json",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch",
+    "lint": "eslint . --ext .ts --ext .mts",
+    "prettier": "prettier --config .prettierrc --write ."
+  },
+  "dependencies": {
+    "tslib": "~2.4"
+  },
+  "devDependencies": {
+    "@types/jest": "~27.5",
+    "@types/node": "~16",
+    "@typescript-eslint/eslint-plugin": "~5.26",
+    "@typescript-eslint/parser": "~5.26",
+    "eslint": "~8.16",
+    "eslint-config-prettier": "~8.5",
+    "eslint-plugin-jest": "~26.2",
+    "jest": "~28.1",
+    "nodemon": "^2.0.16",
+    "prettier": "~2.6",
+    "rimraf": "~3.0",
+    "ts-jest": "~28.0",
+    "ts-node": "^10.8.1",
+    "tsutils": "~3.21",
+    "typescript": "~4.7"
+  }
+}
