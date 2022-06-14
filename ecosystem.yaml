@@ -1,0 +1,5 @@
+apps:
+  - name: "interactive-response"
+    script: "./src/index.ts"
+    node_args: "--type-check -r tsconfig-paths/register"
+    interpreter: "ts-node"
