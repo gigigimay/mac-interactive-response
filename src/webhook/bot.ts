@@ -3,17 +3,16 @@ import { getLogger } from 'utilities/logger'
 
 const logger = getLogger('webhooks/bot.ts')
 
-const botRouter = express.Router()
+const router = express.Router()
 
-botRouter.get('/', (req, res) => {
-  console.log('/ping')
-  res.send('pong')
+router.get('/', (req, res) => {
+  res.send('BOT WEBHOOK')
 })
 
-botRouter.get('/error', function mainHandler(req, res) {
+router.get('/error', function mainHandler(req, res) {
   console.log('/error')
   logger.error('babanana', { tags: { bello: true } })
   throw new Error('Haaaa sipenyaaaa!')
 })
 
-export default botRouter
+export const botRouter = router
