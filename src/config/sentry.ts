@@ -1,4 +1,4 @@
-import { ENVIRONMENT, LOGGING_ENABLED, SENTRY_DSN } from "./env";
+import { ENVIRONMENT, LOGGING_ENABLED, SENTRY_DSN } from './env'
 
 export default {
   dsn: SENTRY_DSN,

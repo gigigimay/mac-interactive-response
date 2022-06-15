@@ -49,3 +49,25 @@ Plus, with [Redis](https://redis.io/) for store the individual session of user
 here is some example of application flow created by state machine :
 
 - [AYCAL](https://xstate.js.org/viz/?gist=4b04985bf22eb9f3635161503c176c19)
+
+## Code formatting and linting
+
+we use `eslint` and `prettier` to ensure we have consistent code formats
+
+it is ideal to always format your code with prettier
+
+for vscode users, you can add this config to your local to have the editor help
+`./.vscode/settings.json`
+
+```
+{
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  }
+}
+```

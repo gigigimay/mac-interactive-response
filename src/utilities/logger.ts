@@ -13,8 +13,8 @@ export const getFormat = (label: string) => {
     format.label({ label }),
     format.printf(
       (lgr) =>
-        `${lgr.timestamp} - ${lgr.level} - [${lgr.label}]: ${lgr.message}`
-    )
+        `${lgr.timestamp} - ${lgr.level} - [${lgr.label}]: ${lgr.message}`,
+    ),
   )
 }
 

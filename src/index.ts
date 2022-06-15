@@ -1,8 +1,8 @@
 import express from 'express'
 import cors from 'cors'
-import * as Sentry from "@sentry/node";
-import * as Tracing from "@sentry/tracing";
-import "@sentry/tracing";
+import * as Sentry from '@sentry/node'
+import * as Tracing from '@sentry/tracing'
+import '@sentry/tracing'
 import dotenv from 'dotenv'
 
 // import { initI18n, updateI18nResources } from 'services/i18n'

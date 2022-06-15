@@ -11,7 +11,8 @@
     "dev": "nodemon --exec ts-node -r tsconfig-paths/register src/index.ts",
     "test": "jest --coverage",
     "test:watch": "jest --watch",
-    "lint": "eslint ./src --ext .ts --ext .mts"
+    "lint": "eslint ./src --ext .ts --ext .mts",
+    "prettier": "prettier --config .prettierrc --write ./src"
   },
   "dependencies": {
     "@sentry/node": "^6.13.2",
@@ -33,7 +34,7 @@
     "@typescript-eslint/eslint-plugin": "~5.26",
     "@typescript-eslint/parser": "~5.26",
     "eslint": "~8.16",
-    "eslint-config-prettier": "~8.5",
+    "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-jest": "~26.2",
     "jest": "~28.1",
     "nodemon": "^2.0.16",
