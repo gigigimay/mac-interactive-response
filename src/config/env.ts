@@ -4,7 +4,7 @@ dotenv.config()
 
 export const NODE_ENV = process.env.NODE_ENV
 export const PORT = Number(process.env.PORT || '8083')
-export const DEVELOPMENT_MODE = process.env.DEVELOPMENT_MODE
+export const IS_DEVELOPMENT_MODE = process.env.DEVELOPMENT_MODE === 'true'
 
 // tenant config
 export const FEATURES = process.env.FEATURES || 'mac-portal'

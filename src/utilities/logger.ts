@@ -2,9 +2,7 @@ import { createLogger, transports, format } from 'winston'
 import Sentry from 'winston-transport-sentry-node'
 
 import sentryConfig from 'config/sentry'
-import { DEVELOPMENT_MODE } from 'config/env'
-
-const isDevelopmentMode = DEVELOPMENT_MODE === 'true'
+import { IS_DEVELOPMENT_MODE } from 'config/env'
 
 export const getFormat = (label: string) => {
   return format.combine(
@@ -22,7 +20,7 @@ export const getLogger = (label: string) => {
   return createLogger({
     format: getFormat(label),
     transports: [
-      new transports.Console({ level: isDevelopmentMode ? 'debug' : 'http' }),
+      new transports.Console({ level: IS_DEVELOPMENT_MODE ? 'debug' : 'http' }),
       new Sentry({ sentry: sentryConfig, level: 'error' }),
     ],
   })
