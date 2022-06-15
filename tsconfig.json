@@ -5,6 +5,13 @@
     "lib": ["esnext"],
     "moduleResolution": "node",
     "baseUrl": "./src",
+    "paths": {
+      "config/*": ["config/*"],
+      "services/*": ["services/*"],
+      "types/*": ["types/*"],
+      "utilities/*": ["utilities/*"],
+      "webhook/*": ["webhook/*"],
+    },
     "outDir": "dist",
     "allowJs": true,
     "allowSyntheticDefaultImports": true,

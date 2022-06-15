@@ -1,4 +1,6 @@
-export default {
+module.exports = {
+  setupFiles: ['dotenv/config'],
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   testEnvironment: 'node',
   preset: 'ts-jest/presets/default-esm',
   globals: {
@@ -6,6 +8,7 @@ export default {
       useESM: true,
     },
   },
+  moduleDirectories: ['node_modules', 'src'],
   moduleNameMapper: {
     '^(\\.{1,2}/.*)\\.(m)?js$': '$1',
   },
