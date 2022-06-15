@@ -9,7 +9,7 @@
     "build": "tsc -p tsconfig.release.json",
     "start": "NODE_PATH=./dist node dist/index.js",
     "dev": "nodemon --exec ts-node -r tsconfig-paths/register src/index.ts",
-    "test": "jest --coverage",
+    "test": "jest",
     "test:watch": "jest --watch",
     "lint": "eslint ./src --ext .ts --ext .mts",
     "prettier": "prettier --config .prettierrc --write ./src"
@@ -17,11 +17,13 @@
   "dependencies": {
     "@sentry/node": "^6.13.2",
     "@sentry/tracing": "^6.11.0",
+    "axios": "^0.27.2",
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "express-async-handler": "^1.2.0",
     "lodash": "^4.17.21",
+    "node-cron": "3.0.0",
     "winston": "^3.3.3",
     "winston-transport-sentry-node": "^2.3.0",
     "xstate": "^4.32.1"
@@ -31,6 +33,7 @@
     "@types/jest": "~27.5",
     "@types/lodash": "^4.14.182",
     "@types/node": "~16",
+    "@types/node-cron": "3.0.0",
     "@typescript-eslint/eslint-plugin": "~5.26",
     "@typescript-eslint/parser": "~5.26",
     "eslint": "~8.16",
