@@ -1,4 +1,4 @@
-import { loadSession, updateSession } from 'services/session'
+import { loadSession, updateSession } from 'session'
 import { Message } from 'types/chat'
 import { getLogger } from 'utilities/logger'
 
@@ -12,13 +12,17 @@ interface HandlerArgs {
   message: Message
 }
 
-const handler = async (args: HandlerArgs): Promise<void> => {
-  const { chatId, tenant } = args
-  const session = await loadSession(chatId, tenant)
+export const handleWebhookEvent = async (args: HandlerArgs): Promise<void> => {
+  const { chatId, tenant, caseId, channel } = args
+  const session = await loadSession(chatId)
+
+  session.tenant = tenant
+  session.channel = channel
+  if (caseId) {
+    session.caseId = caseId
+  }
 
   // handle event
 
   await updateSession(chatId, { data: { test: 'newdata' } })
 }
-
-export default handler

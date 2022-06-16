@@ -3,7 +3,8 @@ import express from 'express'
 import { getLogger } from 'utilities/logger'
 import { getFeatures } from 'services/features'
 import { IS_DEVELOPMENT_MODE } from 'config/env'
-import handler from 'handler'
+import { deleteSession } from 'session'
+import { handleWebhookEvent } from 'handler'
 
 const logger = getLogger('webhooks/bot.ts')
 
@@ -29,18 +30,12 @@ router.post('/process', async (req, res) => {
   const contentText = fp.getOr('', 'content.text', message)
   if (IS_DEVELOPMENT_MODE && contentText.toLowerCase() === 'clear') {
     // to clear data in development env
-    // await deleteSession(chatId)
+    await deleteSession(chatId)
     logger.info(`Cleared session ${chatId} (clear)`)
     return res.status(200).json({ status: 'cleared' })
   }
 
-  await handler({
-    message,
-    channel,
-    chatId,
-    caseId,
-    tenant,
-  })
+  await handleWebhookEvent({ message, channel, chatId, caseId, tenant })
 
   return res.status(200).json({ status: 'handled' })
 })
@@ -49,8 +44,7 @@ router.post('/clearSession', async (req, res) => {
   const { chatId } = req.body.input
   /** deleting session when the chat is assigned via agent-tools (ex. promotion flow)
    * because when assigning, the bot state won't be cleared yet */
-  // TODO: implement clearSession after connecting to redis
-  // await deleteSession(chatId)
+  await deleteSession(chatId)
   logger.info(`Cleared session ${chatId} (/clearSession)`)
   return res.status(200).json({ status: 'cleared' })
 })
