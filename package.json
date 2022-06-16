@@ -23,8 +23,10 @@
     "express": "^4.18.1",
     "express-async-handler": "^1.2.0",
     "express-winston": "^4.2.0",
+    "ioredis": "^5.0.6",
     "lodash": "^4.17.21",
     "node-cron": "3.0.0",
+    "nohm": "^3.0.0",
     "winston": "^3.3.3",
     "winston-transport-sentry-node": "^2.3.0",
     "xstate": "^4.32.1"

@@ -6,6 +6,9 @@ export const NODE_ENV = process.env.NODE_ENV
 export const PORT = Number(process.env.PORT || '8083')
 export const IS_DEVELOPMENT_MODE = process.env.DEVELOPMENT_MODE === 'true'
 
+export const REDIS_URL =
+  process.env.REDIS_URL || 'redis://localhost:6379/0?password=XQ7pRIe6Ae'
+
 // tenant config
 export const FEATURES = process.env.FEATURES || 'mac-portal'
 export const TENANT_CONFIG_URL = process.env.TENANT_CONFIG_URL
