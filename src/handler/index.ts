@@ -15,6 +15,7 @@ interface HandlerArgs {
 export const handleWebhookEvent = async (args: HandlerArgs): Promise<void> => {
   const { chatId, tenant, caseId, channel } = args
   const session = await loadSession(chatId)
+  console.log('🚀 ~ loadSession', session)
 
   session.tenant = tenant
   session.channel = channel
@@ -24,5 +25,5 @@ export const handleWebhookEvent = async (args: HandlerArgs): Promise<void> => {
 
   // handle event
 
-  await updateSession(chatId, { data: { test: 'newdata' } })
+  await updateSession(chatId, session)
 }

@@ -1,9 +1,7 @@
 import type { NohmModel } from 'nohm'
 import NodeCache from 'node-cache'
-
 import { CACHE_CHECK_TTL_SECOND, CACHE_TTL_SECOND } from 'constants/cache'
-import { redis } from 'services/redis'
-import { SessionData } from './model' // init model
+import { SessionData, SessionModel } from './model' // init model
 
 const cache = new NodeCache({
   stdTTL: CACHE_TTL_SECOND,
@@ -13,21 +11,20 @@ const cache = new NodeCache({
 
 /** load session from redis or create new one if not exist */
 export const loadSession = async (sid: string): Promise<SessionData> => {
-  let result: NohmModel
+  const model = new SessionModel()
+  cache.set(sid, model)
   try {
-    result = await redis.factory('session', sid)
+    return await model.load(sid)
   } catch (err) {
-    result = await redis.factory('session')
-    result.property({
+    model.id = sid
+    model.property({
       id: sid,
-      createdAt: new Date().valueOf(),
-      updatedAt: new Date().valueOf(),
+      createdAt: Date.now(),
+      updatedAt: Date.now(),
     })
-    await result.save({ silent: true })
+    await model.save({ silent: true })
+    return model.allProperties()
   }
-
-  cache.set(sid, result)
-  return result.allProperties()
 }
 
 /** get session from cache */
@@ -37,21 +34,20 @@ export const updateSession = async (
   sid: string,
   props: Partial<SessionData>,
 ): Promise<SessionData | undefined> => {
-  const result = getSession(sid)
-  if (!result) return
-  result.property({
+  const model = getSession(sid)
+  if (!model) return
+  model.property({
     ...props,
     updatedAt: Date.now(),
   })
-  await result.save({ silent: true })
-  return result.allProperties()
+  await model.save({ silent: true })
+  return model.allProperties()
 }
 
 export const deleteSession = async (sid: string) => {
-  const result = await redis.factory('session', sid).catch(() => {})
-  if (result) {
-    await result.remove(true)
-  }
+  const model = new SessionModel()
+  model.id = sid
+  await model.remove(true).catch(() => {})
   if (cache.has(sid)) {
     cache.del(sid)
   }

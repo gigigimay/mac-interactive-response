@@ -1,4 +1,5 @@
-import { redis } from 'services/redis'
+import { NohmModel, TTypedDefinitions } from 'nohm'
+import { nohm } from 'services/redis'
 
 export interface SessionData {
   id: string
@@ -11,17 +12,22 @@ export interface SessionData {
   updatedAt: string
 }
 
-export const SessionModel = redis.model<SessionData>('session', {
-  idGenerator() {
-    return (this as any).property('id')
-  },
-  properties: {
-    id: { type: 'string', unique: true },
+class SessionModelClass extends NohmModel<SessionData> {
+  protected static modelName = 'session'
+
+  protected static definitions: TTypedDefinitions<SessionData> = {
+    id: { type: 'string' },
     channel: { type: 'string' },
     tenant: { type: 'string' },
     caseId: { type: 'number' },
     data: { type: 'json', defaultValue: {} },
     createdAt: { type: 'timestamp' },
     updatedAt: { type: 'timestamp' },
-  },
-})
+  }
+
+  public idGenerator() {
+    return this.property('id')
+  }
+}
+
+export const SessionModel = nohm.register(SessionModelClass)
