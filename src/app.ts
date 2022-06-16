@@ -1,15 +1,13 @@
-import express, { Express, Request, Response, NextFunction } from 'express'
+import express, { Express } from 'express'
 import cors from 'cors'
 import * as Sentry from '@sentry/node'
 import * as Tracing from '@sentry/tracing'
 import expressWinston from 'express-winston'
 
-import { getFormat, getLogger, getTransportOptions } from 'utilities/logger'
-import { IS_DEVELOPMENT_MODE } from 'config/env'
+import { getFormat, getTransportOptions } from 'utilities/logger'
 import sentryConfig from 'config/sentry'
 import { botRouter } from 'webhook/bot'
-
-const logger = getLogger('app.ts')
+import { errorHandler } from 'middlewares/error'
 
 export const createApp = (): Express => {
   const app = express()
@@ -44,25 +42,7 @@ export const createApp = (): Express => {
   app.use('/webhook/bot', botRouter)
 
   app.use(Sentry.Handlers.errorHandler())
-
-  // error handling
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-    switch (err.name) {
-      default:
-        logger.error(err)
-        return res.status(500).send({
-          errors: [
-            {
-              msg: IS_DEVELOPMENT_MODE
-                ? err.message
-                : 'An unexpected error has occured.',
-              code: 'unknown',
-            },
-          ],
-        })
-    }
-  })
+  app.use(errorHandler)
 
   return app
 }
