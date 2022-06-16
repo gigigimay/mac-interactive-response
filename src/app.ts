@@ -46,6 +46,7 @@ export const createApp = (): Express => {
   app.use(Sentry.Handlers.errorHandler())
 
   // error handling
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
     switch (err.name) {
       default:

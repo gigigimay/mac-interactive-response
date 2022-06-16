@@ -15,8 +15,8 @@ router.get('/', (req, res) => {
 
 router.post('/process', async (req, res) => {
   const { name: tenant } = getFeatures(req.query.tenant as string)
-  const { chatId, from, to, channel, appId: caseId, content } = req.body.input
-  const { owner, message } = req.body.result
+  const { chatId, to, appId: caseId } = req.body.input
+  const { owner, message, channel } = req.body.result
 
   // TODO: validate request and return 400
 
@@ -26,7 +26,7 @@ router.post('/process', async (req, res) => {
     return res.status(200).json({ status: 'skipped' })
   }
 
-  const contentText = fp.getOr('', 'text', content)
+  const contentText = fp.getOr('', 'content.text', message)
   if (IS_DEVELOPMENT_MODE && contentText.toLowerCase() === 'clear') {
     // to clear data in development env
     // await deleteSession(chatId)
@@ -34,14 +34,13 @@ router.post('/process', async (req, res) => {
     return res.status(200).json({ status: 'cleared' })
   }
 
-  await handler(
-    {
-      ...message,
-      channel,
-      caseId,
-    },
+  await handler({
+    message,
+    channel,
+    chatId,
+    caseId,
     tenant,
-  )
+  })
 
   return res.status(200).json({ status: 'handled' })
 })
