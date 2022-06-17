@@ -3,7 +3,7 @@ import { AnyEventObject, createMachine, interpret } from 'xstate'
 import { createStates } from './createStates'
 
 import flowConfig from 'config/flows/count.json'
-import { Context, StateMachineType, StateType } from 'types/state'
+import { Context, EventType, StateMachineType, StateType } from 'types/state'
 import { SessionData } from 'session/model'
 
 const interpretStateMachine = (
@@ -44,8 +44,8 @@ export const handleState = async (
   })
 
   const stateEvent: AnyEventObject = {
-    type: 'MESSAGE',
-    text: event.message.content.text,
+    type: EventType.MESSAGE,
+    text: event.message.content?.text,
   }
 
   const resultState = await interpretStateMachine(

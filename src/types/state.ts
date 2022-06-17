@@ -10,6 +10,7 @@ import {
   StateSchema,
   TypegenDisabled,
 } from 'xstate'
+import { FlowConfig, NodeConfig } from './flow'
 
 export interface Context {
   session: SessionData
@@ -42,3 +43,12 @@ export type StateType = State<
     ServiceMap
   >
 >
+
+export enum EventType {
+  MESSAGE = 'MESSAGE',
+}
+
+export type StateNodeConfigCreator = (
+  currentNode: NodeConfig,
+  flowConfig: FlowConfig,
+) => StateNodeConfigType
