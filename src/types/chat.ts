@@ -15,3 +15,8 @@ export interface Message {
     owner: string
   }
 }
+
+export enum UsageType {
+  Auto = 'Auto',
+  Manual = 'Manual',
+}
