@@ -31,11 +31,12 @@ export const createApp = (): Express => {
     expressWinston.logger({
       meta: true,
       ignoredRoutes: ['/'],
-      expressFormat: true,
       level: 'http',
-      colorize: true,
       format: getFormat('app.ts'),
       transports: getTransportOptions(),
+      responseWhitelist: ['body'],
+      // add custom res.body.status to the log message
+      msg: '{{req.method}} {{req.url}} {{res.statusCode}} {{res.responseTime}}ms (status: {{res.body.status}})',
     }),
   )
 

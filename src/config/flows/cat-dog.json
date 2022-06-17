@@ -1,0 +1,252 @@
+{
+  "nodes": [
+    {
+      "id": "start",
+      "type": "waiting",
+      "data": {
+        "type": "start",
+        "conditions": [
+          {
+            "id": "any"
+          }
+        ]
+      },
+      "position": {
+        "x": -163.765607839732,
+        "y": 35.073584451932426
+      },
+      "width": 223,
+      "height": 168,
+      "selected": false,
+      "positionAbsolute": {
+        "x": -163.765607839732,
+        "y": 35.073584451932426
+      },
+      "dragging": false
+    },
+    {
+      "id": "idle-0",
+      "type": "waiting",
+      "data": {
+        "conditions": [
+          {
+            "id": "cat",
+            "message": "Cat"
+          },
+          {
+            "id": "dog",
+            "message": "Dog"
+          },
+          {
+            "id": "any"
+          }
+        ]
+      },
+      "position": {
+        "x": 361.33674263619605,
+        "y": 243.67499774210933
+      },
+      "width": 223,
+      "height": 248,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 361.33674263619605,
+        "y": 243.67499774210933
+      },
+      "dragging": false
+    },
+    {
+      "id": "send-0",
+      "type": "sendMessage",
+      "data": {
+        "value": "Cats or dogs?"
+      },
+      "position": {
+        "x": 76.46262165191041,
+        "y": 58.48240801116714
+      },
+      "width": 240,
+      "height": 108,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 76.46262165191041,
+        "y": 58.48240801116714
+      },
+      "dragging": false
+    },
+    {
+      "id": "send-1",
+      "type": "sendMessage",
+      "data": {
+        "value": "I love cats, too!"
+      },
+      "position": {
+        "x": 736.1490432674127,
+        "y": 111.62298912551111
+      },
+      "width": 240,
+      "height": 108,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 736.1490432674127,
+        "y": 111.62298912551111
+      },
+      "dragging": false
+    },
+    {
+      "id": "send-2",
+      "type": "sendMessage",
+      "data": {
+        "value": "I love dogs, too!"
+      },
+      "position": {
+        "x": 737.6927622089214,
+        "y": 305.5405916818065
+      },
+      "width": 240,
+      "height": 108,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 737.6927622089214,
+        "y": 305.5405916818065
+      },
+      "dragging": false
+    },
+    {
+      "id": "send-3",
+      "type": "sendMessage",
+      "data": {
+        "value": "Please answer again."
+      },
+      "position": {
+        "x": 741.8123740769072,
+        "y": 465.2323383223519
+      },
+      "width": 240,
+      "height": 108,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 741.8123740769072,
+        "y": 465.2323383223519
+      },
+      "dragging": false
+    },
+    {
+      "id": "end",
+      "type": "waiting",
+      "data": {
+        "type": "end"
+      },
+      "position": {
+        "x": 1319.0181760642424,
+        "y": 530.859539637864
+      },
+      "width": 162,
+      "height": 128,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 1319.0181760642424,
+        "y": 530.859539637864
+      },
+      "dragging": false
+    }
+  ],
+  "edges": [
+    {
+      "animated": true,
+      "style": {
+        "stroke": "white"
+      },
+      "type": "default",
+      "source": "start",
+      "sourceHandle": "any",
+      "target": "send-0",
+      "targetHandle": null,
+      "id": "reactflow__edge-startany-send-0"
+    },
+    {
+      "animated": true,
+      "style": {
+        "stroke": "white"
+      },
+      "type": "default",
+      "source": "send-0",
+      "sourceHandle": "a",
+      "target": "idle-0",
+      "targetHandle": null,
+      "id": "reactflow__edge-send-0a-idle-0"
+    },
+    {
+      "animated": true,
+      "style": {
+        "stroke": "white"
+      },
+      "type": "default",
+      "source": "idle-0",
+      "sourceHandle": "cat",
+      "target": "send-1",
+      "targetHandle": null,
+      "id": "reactflow__edge-idle-0cat-send-1"
+    },
+    {
+      "animated": true,
+      "style": {
+        "stroke": "white"
+      },
+      "type": "default",
+      "source": "idle-0",
+      "sourceHandle": "dog",
+      "target": "send-2",
+      "targetHandle": null,
+      "id": "reactflow__edge-idle-0dog-send-2"
+    },
+    {
+      "animated": true,
+      "style": {
+        "stroke": "white"
+      },
+      "type": "default",
+      "source": "idle-0",
+      "sourceHandle": "any",
+      "target": "send-3",
+      "targetHandle": null,
+      "id": "reactflow__edge-idle-0any-send-3"
+    },
+    {
+      "animated": true,
+      "style": {
+        "stroke": "white"
+      },
+      "type": "default",
+      "source": "send-1",
+      "sourceHandle": "a",
+      "target": "end",
+      "targetHandle": null,
+      "id": "reactflow__edge-send-1a-end"
+    },
+    {
+      "animated": true,
+      "style": {
+        "stroke": "white"
+      },
+      "type": "default",
+      "source": "send-2",
+      "sourceHandle": "a",
+      "target": "end",
+      "targetHandle": null,
+      "id": "reactflow__edge-send-2a-end"
+    },
+    {
+      "animated": true,
+      "style": {
+        "stroke": "white"
+      },
+      "type": "default",
+      "source": "send-3",
+      "sourceHandle": "a",
+      "target": "idle-0",
+      "targetHandle": null,
+      "id": "reactflow__edge-send-3a-idle-0"
+    }
+  ]
+}

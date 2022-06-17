@@ -1,29 +1,23 @@
 import { loadSession, updateSession } from 'session'
-import { Message } from 'types/chat'
-import { getLogger } from 'utilities/logger'
+import { WebhookEvent } from 'types/webhook'
+import { handleState } from './handleState'
 
-const logger = getLogger('handler/index.ts')
+export const handleWebhookEvent = async (
+  event: WebhookEvent,
+): Promise<void> => {
+  const { chatId } = event
 
-interface HandlerArgs {
-  chatId: string
-  tenant: string
-  channel: string
-  caseId?: number
-  message: Message
-}
-
-export const handleWebhookEvent = async (args: HandlerArgs): Promise<void> => {
-  const { chatId, tenant, caseId, channel } = args
   const session = await loadSession(chatId)
-  console.log('🚀 ~ loadSession', session)
 
-  session.tenant = tenant
-  session.channel = channel
-  if (caseId) {
-    session.caseId = caseId
+  session.tenant = event.tenant
+  session.channel = event.channel
+
+  if (event.caseId) {
+    session.caseId = event.caseId
   }
 
-  // handle event
+  /** the 'session' object will be mutated inside */
+  await handleState(event, session)
 
   await updateSession(chatId, session)
 }

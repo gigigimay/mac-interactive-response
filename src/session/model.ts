@@ -7,6 +7,8 @@ export interface SessionData {
   tenant: string
   /** if no caseId, it will return 0 */
   caseId: number
+  flowId?: string
+  stateId?: string
   data: Record<string, any>
   createdAt: string
   updatedAt: string
@@ -20,6 +22,8 @@ class SessionModelClass extends NohmModel<SessionData> {
     channel: { type: 'string' },
     tenant: { type: 'string' },
     caseId: { type: 'number' },
+    flowId: { type: 'string' },
+    stateId: { type: 'string' },
     data: { type: 'json', defaultValue: {} },
     createdAt: { type: 'timestamp' },
     updatedAt: { type: 'timestamp' },

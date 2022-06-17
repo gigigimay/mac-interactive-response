@@ -35,9 +35,14 @@ router.post('/process', async (req, res) => {
     return res.status(200).json({ status: 'cleared' })
   }
 
-  await handleWebhookEvent({ message, channel, chatId, caseId, tenant })
+  res.status(200).json({ status: 'handling' })
 
-  return res.status(200).json({ status: 'handled' })
+  /**
+   * NOTE: we start handling event after sending response
+   * so that the bot can take time to run as long as it needs */
+  handleWebhookEvent({ message, channel, chatId, caseId, tenant }).catch(
+    (err) => logger.error(err),
+  )
 })
 
 router.post('/clearSession', async (req, res) => {
