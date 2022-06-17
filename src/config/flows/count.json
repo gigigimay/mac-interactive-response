@@ -13,7 +13,7 @@
           }
         ]
       },
-      "type": "waiting",
+      "type": "idle",
       "width": 223,
       "height": 168,
       "selected": true,
@@ -56,7 +56,7 @@
           }
         ]
       },
-      "type": "waiting",
+      "type": "idle",
       "width": 223,
       "height": 168,
       "selected": false,
@@ -103,7 +103,7 @@
           }
         ]
       },
-      "type": "waiting",
+      "type": "idle",
       "width": 223,
       "height": 208,
       "selected": false,
@@ -150,7 +150,7 @@
           }
         ]
       },
-      "type": "waiting",
+      "type": "idle",
       "width": 223,
       "height": 208,
       "selected": false,

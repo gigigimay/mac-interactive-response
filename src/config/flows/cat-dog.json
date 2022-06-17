@@ -2,7 +2,7 @@
   "nodes": [
     {
       "id": "start",
-      "type": "waiting",
+      "type": "idle",
       "data": {
         "type": "start",
         "conditions": [
@@ -26,7 +26,7 @@
     },
     {
       "id": "idle-0",
-      "type": "waiting",
+      "type": "idle",
       "data": {
         "conditions": [
           {
@@ -133,7 +133,7 @@
     },
     {
       "id": "end",
-      "type": "waiting",
+      "type": "idle",
       "data": {
         "type": "end"
       },

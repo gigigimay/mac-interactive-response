@@ -1,7 +1,6 @@
 export enum NodeType {
+  idle = 'idle',
   sendMessage = 'sendMessage',
-  checkMessage = 'checkMessage',
-  waiting = 'waiting',
 }
 
 export interface NodeConfig {

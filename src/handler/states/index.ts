@@ -4,6 +4,6 @@ import { idleState } from './idleState'
 import { sendMessageState } from './sendMessageState'
 
 export const stateCreatorsByNodeType: Record<string, StateNodeConfigCreator> = {
-  [NodeType.waiting]: idleState,
+  [NodeType.idle]: idleState,
   [NodeType.sendMessage]: sendMessageState,
 }
