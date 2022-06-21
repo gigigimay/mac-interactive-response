@@ -8,7 +8,7 @@ import { findNextNodeId } from 'utilities/flow'
 // TODO: dynamic message type (text/flex/etc.)
 
 const sendMessage = async (ctx: Context, text: string) => {
-  console.log(`🍀 Sending message... "${text}"`)
+  console.time(`🍀 Message sent! "${text}"`)
   await appSyncClient.mutate({
     mutation: appendNewMessageMutation,
     variables: {
@@ -27,7 +27,7 @@ const sendMessage = async (ctx: Context, text: string) => {
       tenant: ctx.session.tenant,
     },
   })
-  console.log(`🍀 Message sent! "${text}"`)
+  console.timeEnd(`🍀 Message sent! "${text}"`)
 }
 
 export const sendMessageState: StateNodeConfigCreator = (

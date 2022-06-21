@@ -1,5 +1,10 @@
-import { EventType, StateNodeConfigCreator } from 'types/state'
-import { findNextNodeId } from 'utilities/flow'
+import { EventCondition } from 'types/flow'
+import {
+  EventType,
+  StateNodeConfigCreator,
+  StateNodeConfigType,
+} from 'types/state'
+import { findNextNodeId, isMessageEventMatchedCondition } from 'utilities/flow'
 
 export const idleState: StateNodeConfigCreator = (currentNode, flowConfig) => {
   const { id, type, data } = currentNode
@@ -12,26 +17,22 @@ export const idleState: StateNodeConfigCreator = (currentNode, flowConfig) => {
     }
   }
 
-  const { conditions = [] } = data
+  const conditions: EventCondition[] = data.conditions || []
 
-  // TODO: dynamic condition types
-  const onMessages = conditions.map(({ id: conditionId, message }) => {
-    const next = findNextNodeId(currentNode, flowConfig, conditionId)
-    if (!message) {
-      return next
-    }
-    return {
-      cond: (ctx, evt) => evt.text === message,
-      target: next,
-    }
-  })
-
-  return {
+  const result: StateNodeConfigType = {
     id: id,
     tags: [type],
-    // type: 'final', // FIXME
     on: {
-      [EventType.MESSAGE]: onMessages,
+      [EventType.MESSAGE]: conditions.map((condition) => {
+        const { id: conditionId } = condition
+        const next = findNextNodeId(currentNode, flowConfig, conditionId)
+        return {
+          cond: (ctx, evt) =>
+            isMessageEventMatchedCondition(evt.message, condition),
+          target: next,
+        }
+      }),
     },
   }
+  return result
 }

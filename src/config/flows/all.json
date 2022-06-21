@@ -1,0 +1,1103 @@
+[
+  {
+    "id": "flow-0",
+    "name": "Cat or Dog?",
+    "type": "normal",
+    "priority": 1,
+    "nodes": [
+      {
+        "id": "start",
+        "type": "idle",
+        "data": {
+          "conditions": [
+            {
+              "id": "any",
+              "message": "cat"
+            },
+            {
+              "id": "-H9MCBqyks3mcUkzwWV4t",
+              "message": "dog"
+            }
+          ]
+        },
+        "position": {
+          "x": -253.765607839732,
+          "y": 5.073584451932447
+        },
+        "width": 239,
+        "height": 232,
+        "selected": false,
+        "positionAbsolute": {
+          "x": -253.765607839732,
+          "y": 5.073584451932447
+        },
+        "dragging": false
+      },
+      {
+        "id": "idle-0",
+        "type": "idle",
+        "data": {
+          "conditions": [
+            {
+              "id": "cat",
+              "message": "Cat"
+            },
+            {
+              "id": "dog",
+              "message": "Dog"
+            },
+            {
+              "id": "any"
+            }
+          ]
+        },
+        "position": {
+          "x": 361.33674263619605,
+          "y": 243.67499774210933
+        },
+        "width": 239,
+        "height": 284,
+        "selected": false,
+        "positionAbsolute": {
+          "x": 361.33674263619605,
+          "y": 243.67499774210933
+        },
+        "dragging": false
+      },
+      {
+        "id": "send-0",
+        "type": "sendMessage",
+        "data": {
+          "value": "Cats or dogs?"
+        },
+        "position": {
+          "x": 91.46262165191041,
+          "y": 58.48240801116714
+        },
+        "width": 240,
+        "height": 116,
+        "selected": false,
+        "positionAbsolute": {
+          "x": 91.46262165191041,
+          "y": 58.48240801116714
+        },
+        "dragging": false
+      },
+      {
+        "id": "send-1",
+        "type": "sendMessage",
+        "data": {
+          "value": "I love cats, too!"
+        },
+        "position": {
+          "x": 736.1490432674127,
+          "y": 111.62298912551111
+        },
+        "width": 240,
+        "height": 116,
+        "selected": false,
+        "positionAbsolute": {
+          "x": 736.1490432674127,
+          "y": 111.62298912551111
+        },
+        "dragging": false
+      },
+      {
+        "id": "send-2",
+        "type": "sendMessage",
+        "data": {
+          "value": "I love dogs, too!"
+        },
+        "position": {
+          "x": 737.6927622089214,
+          "y": 320.5405916818065
+        },
+        "width": 240,
+        "height": 116,
+        "selected": false,
+        "positionAbsolute": {
+          "x": 737.6927622089214,
+          "y": 320.5405916818065
+        },
+        "dragging": false
+      },
+      {
+        "id": "send-3",
+        "type": "sendMessage",
+        "data": {
+          "value": "Please answer again."
+        },
+        "position": {
+          "x": 741.8123740769072,
+          "y": 510.2323383223519
+        },
+        "width": 240,
+        "height": 116,
+        "selected": false,
+        "positionAbsolute": {
+          "x": 741.8123740769072,
+          "y": 510.2323383223519
+        },
+        "dragging": false
+      },
+      {
+        "id": "end",
+        "type": "idle",
+        "data": {
+          "type": "end"
+        },
+        "position": {
+          "x": 1334.0181760642424,
+          "y": 515.859539637864
+        },
+        "width": 162,
+        "height": 128,
+        "selected": true,
+        "positionAbsolute": {
+          "x": 1334.0181760642424,
+          "y": 515.859539637864
+        },
+        "dragging": false
+      }
+    ],
+    "edges": [
+      {
+        "animated": true,
+        "style": {
+          "stroke": "default"
+        },
+        "type": "default",
+        "source": "start",
+        "sourceHandle": "any",
+        "target": "send-0",
+        "targetHandle": null,
+        "id": "reactflow__edge-startany-send-0"
+      },
+      {
+        "animated": true,
+        "style": {
+          "stroke": "default"
+        },
+        "type": "default",
+        "source": "send-0",
+        "sourceHandle": "a",
+        "target": "idle-0",
+        "targetHandle": null,
+        "id": "reactflow__edge-send-0a-idle-0"
+      },
+      {
+        "animated": true,
+        "style": {
+          "stroke": "default"
+        },
+        "type": "default",
+        "source": "idle-0",
+        "sourceHandle": "cat",
+        "target": "send-1",
+        "targetHandle": null,
+        "id": "reactflow__edge-idle-0cat-send-1"
+      },
+      {
+        "animated": true,
+        "style": {
+          "stroke": "default"
+        },
+        "type": "default",
+        "source": "idle-0",
+        "sourceHandle": "dog",
+        "target": "send-2",
+        "targetHandle": null,
+        "id": "reactflow__edge-idle-0dog-send-2"
+      },
+      {
+        "animated": true,
+        "style": {
+          "stroke": "default"
+        },
+        "type": "default",
+        "source": "idle-0",
+        "sourceHandle": "any",
+        "target": "send-3",
+        "targetHandle": null,
+        "id": "reactflow__edge-idle-0any-send-3"
+      },
+      {
+        "animated": true,
+        "style": {
+          "stroke": "default"
+        },
+        "type": "default",
+        "source": "send-1",
+        "sourceHandle": "a",
+        "target": "end",
+        "targetHandle": null,
+        "id": "reactflow__edge-send-1a-end"
+      },
+      {
+        "animated": true,
+        "style": {
+          "stroke": "default"
+        },
+        "type": "default",
+        "source": "send-2",
+        "sourceHandle": "a",
+        "target": "end",
+        "targetHandle": null,
+        "id": "reactflow__edge-send-2a-end"
+      },
+      {
+        "animated": true,
+        "style": {
+          "stroke": "default"
+        },
+        "type": "default",
+        "source": "send-3",
+        "sourceHandle": "a",
+        "target": "idle-0",
+        "targetHandle": null,
+        "id": "reactflow__edge-send-3a-idle-0"
+      },
+      {
+        "animated": true,
+        "type": "default",
+        "source": "start",
+        "sourceHandle": "-H9MCBqyks3mcUkzwWV4t",
+        "target": "send-0",
+        "targetHandle": null,
+        "id": "reactflow__edge-start-H9MCBqyks3mcUkzwWV4t-send-0"
+      }
+    ]
+  },
+  {
+    "id": "flow-2",
+    "name": "Count 12345",
+    "type": "normal",
+    "priority": 1,
+    "nodes": [
+      {
+        "id": "end",
+        "position": {
+          "x": 1880,
+          "y": 785
+        },
+        "data": {
+          "type": "end"
+        },
+        "type": "idle",
+        "width": 239,
+        "height": 180,
+        "selected": true,
+        "positionAbsolute": {
+          "x": 1880,
+          "y": 785
+        },
+        "dragging": false
+      },
+      {
+        "id": "nf7c7hjJ",
+        "position": {
+          "x": 1570,
+          "y": 605
+        },
+        "data": {
+          "value": "เก่งมากคร้าาา"
+        },
+        "type": "sendMessage",
+        "width": 240,
+        "height": 116,
+        "selected": false,
+        "positionAbsolute": {
+          "x": 1570,
+          "y": 605
+        },
+        "dragging": false
+      },
+      {
+        "id": "start",
+        "position": {
+          "x": -140,
+          "y": 130
+        },
+        "data": {
+          "conditions": [
+            {
+              "id": "any",
+              "message": "1"
+            }
+          ]
+        },
+        "type": "idle",
+        "width": 239,
+        "height": 180,
+        "selected": false,
+        "positionAbsolute": {
+          "x": -140,
+          "y": 130
+        },
+        "dragging": false
+      },
+      {
+        "id": "YvrHBDxj",
+        "position": {
+          "x": 180,
+          "y": 275
+        },
+        "data": {
+          "value": "2"
+        },
+        "type": "sendMessage",
+        "width": 240,
+        "height": 116,
+        "selected": false,
+        "positionAbsolute": {
+          "x": 180,
+          "y": 275
+        },
+        "dragging": false
+      },
+      {
+        "id": "Nnxt7mF_",
+        "position": {
+          "x": 480,
+          "y": 465
+        },
+        "data": {
+          "conditions": [
+            {
+              "id": "any",
+              "message": "3"
+            },
+            {
+              "id": "o_8fejSolOWEIA3ejgCMX",
+              "message": ""
+            }
+          ]
+        },
+        "type": "idle",
+        "width": 239,
+        "height": 232,
+        "selected": false,
+        "positionAbsolute": {
+          "x": 480,
+          "y": 465
+        },
+        "dragging": false
+      },
+      {
+        "id": "mW-B2_nE",
+        "position": {
+          "x": 900,
+          "y": 485
+        },
+        "data": {
+          "value": "4"
+        },
+        "type": "sendMessage",
+        "width": 240,
+        "height": 116,
+        "selected": false,
+        "positionAbsolute": {
+          "x": 900,
+          "y": 485
+        },
+        "dragging": false
+      },
+      {
+        "id": "Vo4eJxfo",
+        "position": {
+          "x": 1205,
+          "y": 575
+        },
+        "data": {
+          "conditions": [
+            {
+              "id": "any",
+              "message": "5"
+            },
+            {
+              "id": "f3ocxgaoWAyS0rPu_804o",
+              "message": ""
+            }
+          ]
+        },
+        "type": "idle",
+        "width": 239,
+        "height": 232,
+        "selected": false,
+        "positionAbsolute": {
+          "x": 1205,
+          "y": 575
+        },
+        "dragging": false
+      }
+    ],
+    "edges": [
+      {
+        "animated": true,
+        "style": {
+          "stroke": "default"
+        },
+        "type": "default",
+        "source": "start",
+        "sourceHandle": "any",
+        "target": "YvrHBDxj",
+        "targetHandle": null,
+        "id": "reactflow__edge-startany-YvrHBDxj"
+      },
+      {
+        "animated": true,
+        "style": {
+          "stroke": "default"
+        },
+        "type": "default",
+        "source": "YvrHBDxj",
+        "sourceHandle": "a",
+        "target": "Nnxt7mF_",
+        "targetHandle": null,
+        "id": "reactflow__edge-YvrHBDxja-Nnxt7mF_"
+      },
+      {
+        "animated": true,
+        "style": {
+          "stroke": "default"
+        },
+        "type": "default",
+        "source": "Nnxt7mF_",
+        "sourceHandle": "o_8fejSolOWEIA3ejgCMX",
+        "target": "YvrHBDxj",
+        "targetHandle": null,
+        "id": "reactflow__edge-Nnxt7mF_o_8fejSolOWEIA3ejgCMX-YvrHBDxj"
+      },
+      {
+        "animated": true,
+        "style": {
+          "stroke": "default"
+        },
+        "type": "default",
+        "source": "Nnxt7mF_",
+        "sourceHandle": "any",
+        "target": "mW-B2_nE",
+        "targetHandle": null,
+        "id": "reactflow__edge-Nnxt7mF_any-mW-B2_nE"
+      },
+      {
+        "animated": true,
+        "style": {
+          "stroke": "default"
+        },
+        "type": "default",
+        "source": "mW-B2_nE",
+        "sourceHandle": "a",
+        "target": "Vo4eJxfo",
+        "targetHandle": null,
+        "id": "reactflow__edge-mW-B2_nEa-Vo4eJxfo"
+      },
+      {
+        "animated": true,
+        "style": {
+          "stroke": "default"
+        },
+        "type": "default",
+        "source": "Vo4eJxfo",
+        "sourceHandle": "f3ocxgaoWAyS0rPu_804o",
+        "target": "mW-B2_nE",
+        "targetHandle": null,
+        "id": "reactflow__edge-Vo4eJxfof3ocxgaoWAyS0rPu_804o-mW-B2_nE"
+      },
+      {
+        "animated": true,
+        "style": {
+          "stroke": "default"
+        },
+        "type": "default",
+        "source": "Vo4eJxfo",
+        "sourceHandle": "any",
+        "target": "nf7c7hjJ",
+        "targetHandle": null,
+        "id": "reactflow__edge-Vo4eJxfoany-nf7c7hjJ"
+      },
+      {
+        "animated": true,
+        "style": {
+          "stroke": "default"
+        },
+        "type": "default",
+        "source": "nf7c7hjJ",
+        "sourceHandle": "a",
+        "target": "end",
+        "targetHandle": null,
+        "id": "reactflow__edge-nf7c7hjJa-end"
+      }
+    ]
+  },
+  {
+    "id": "HAxkJEcw",
+    "name": "1 + 1",
+    "type": "fallback",
+    "priority": 0,
+    "nodes": [
+      {
+        "id": "u6AIRZZi",
+        "position": {
+          "x": 760,
+          "y": 485
+        },
+        "data": {
+          "value": "Good job! :D"
+        },
+        "type": "sendMessage",
+        "width": 240,
+        "height": 116,
+        "selected": false,
+        "positionAbsolute": {
+          "x": 760,
+          "y": 485
+        },
+        "dragging": false
+      },
+      {
+        "id": "tmf3jsCs",
+        "position": {
+          "x": 225,
+          "y": 870
+        },
+        "data": {
+          "value": "Wrong answer! :("
+        },
+        "type": "sendMessage",
+        "width": 240,
+        "height": 116,
+        "selected": false,
+        "positionAbsolute": {
+          "x": 225,
+          "y": 870
+        },
+        "dragging": false
+      },
+      {
+        "id": "l87a7pjd",
+        "position": {
+          "x": 320,
+          "y": 455
+        },
+        "data": {
+          "conditions": [
+            {
+              "id": "any",
+              "message": "2"
+            },
+            {
+              "id": "9kJvR21jW6MTMduF2Sw0U",
+              "message": ""
+            }
+          ]
+        },
+        "type": "idle",
+        "width": 239,
+        "height": 232,
+        "selected": false,
+        "positionAbsolute": {
+          "x": 320,
+          "y": 455
+        },
+        "dragging": false
+      },
+      {
+        "id": "DKwWEv7i",
+        "position": {
+          "x": -15,
+          "y": 290
+        },
+        "data": {
+          "value": "1 + 1 = ?"
+        },
+        "type": "sendMessage",
+        "width": 240,
+        "height": 116,
+        "selected": false,
+        "positionAbsolute": {
+          "x": -15,
+          "y": 290
+        },
+        "dragging": false
+      },
+      {
+        "id": "start",
+        "position": {
+          "x": -410,
+          "y": 145
+        },
+        "data": {
+          "conditions": [
+            {
+              "id": "any"
+            }
+          ]
+        },
+        "type": "idle",
+        "width": 239,
+        "height": 180,
+        "selected": false,
+        "positionAbsolute": {
+          "x": -410,
+          "y": 145
+        },
+        "dragging": false
+      },
+      {
+        "id": "end",
+        "type": "idle",
+        "data": {
+          "type": "end"
+        },
+        "position": {
+          "x": 1139.0181760642424,
+          "y": 680.859539637864
+        },
+        "width": 162,
+        "height": 128,
+        "selected": true,
+        "positionAbsolute": {
+          "x": 1139.0181760642424,
+          "y": 680.859539637864
+        },
+        "dragging": false
+      }
+    ],
+    "edges": [
+      {
+        "animated": true,
+        "type": "default",
+        "source": "start",
+        "sourceHandle": "any",
+        "target": "DKwWEv7i",
+        "targetHandle": null,
+        "id": "reactflow__edge-startany-DKwWEv7i"
+      },
+      {
+        "animated": true,
+        "type": "default",
+        "source": "DKwWEv7i",
+        "sourceHandle": "a",
+        "target": "l87a7pjd",
+        "targetHandle": null,
+        "id": "reactflow__edge-DKwWEv7ia-l87a7pjd"
+      },
+      {
+        "animated": true,
+        "type": "default",
+        "source": "l87a7pjd",
+        "sourceHandle": "9kJvR21jW6MTMduF2Sw0U",
+        "target": "tmf3jsCs",
+        "targetHandle": null,
+        "id": "reactflow__edge-l87a7pjd9kJvR21jW6MTMduF2Sw0U-tmf3jsCs"
+      },
+      {
+        "animated": true,
+        "type": "default",
+        "source": "tmf3jsCs",
+        "sourceHandle": "a",
+        "target": "DKwWEv7i",
+        "targetHandle": null,
+        "id": "reactflow__edge-tmf3jsCsa-DKwWEv7i"
+      },
+      {
+        "animated": true,
+        "type": "default",
+        "source": "l87a7pjd",
+        "sourceHandle": "any",
+        "target": "u6AIRZZi",
+        "targetHandle": null,
+        "id": "reactflow__edge-l87a7pjdany-u6AIRZZi"
+      },
+      {
+        "animated": true,
+        "type": "default",
+        "source": "u6AIRZZi",
+        "sourceHandle": "a",
+        "target": "end",
+        "targetHandle": null,
+        "id": "reactflow__edge-u6AIRZZia-end"
+      }
+    ]
+  },
+  {
+    "id": "1v9aN_dK",
+    "name": "สนใจประกัน",
+    "type": "normal",
+    "priority": 1,
+    "nodes": [
+      {
+        "id": "r6P2oPpE",
+        "position": {
+          "x": 1205,
+          "y": 465
+        },
+        "data": {
+          "value": "รถยนต์ / บิ๊กไบค์"
+        },
+        "type": "sendMessage",
+        "width": 240,
+        "height": 116,
+        "selected": false,
+        "positionAbsolute": {
+          "x": 1205,
+          "y": 465
+        },
+        "dragging": false
+      },
+      {
+        "id": "dFBmYEho",
+        "position": {
+          "x": 1210,
+          "y": 300
+        },
+        "data": {
+          "value": "กรุณากรอกเลขทะเบียน..."
+        },
+        "type": "sendMessage",
+        "width": 240,
+        "height": 116,
+        "selected": false,
+        "positionAbsolute": {
+          "x": 1210,
+          "y": 300
+        },
+        "dragging": false
+      },
+      {
+        "id": "QaC3XZI7",
+        "position": {
+          "x": 425,
+          "y": 880
+        },
+        "data": {
+          "value": "กรุณาตอบให้ตรงคำถาม"
+        },
+        "type": "sendMessage",
+        "width": 240,
+        "height": 116,
+        "selected": true,
+        "positionAbsolute": {
+          "x": 425,
+          "y": 880
+        },
+        "dragging": false
+      },
+      {
+        "id": "aAVXvLnI",
+        "position": {
+          "x": 855,
+          "y": 295
+        },
+        "data": {
+          "value": "(renew flow)"
+        },
+        "type": "sendMessage",
+        "width": 240,
+        "height": 116,
+        "selected": false,
+        "positionAbsolute": {
+          "x": 855,
+          "y": 295
+        },
+        "dragging": false
+      },
+      {
+        "id": "SwYuvZ_g",
+        "position": {
+          "x": 850,
+          "y": 460
+        },
+        "data": {
+          "value": "(new flow)"
+        },
+        "type": "sendMessage",
+        "width": 240,
+        "height": 116,
+        "selected": false,
+        "positionAbsolute": {
+          "x": 850,
+          "y": 460
+        },
+        "dragging": false
+      },
+      {
+        "id": "M4KXOxLM",
+        "position": {
+          "x": 435,
+          "y": 330
+        },
+        "data": {
+          "conditions": [
+            {
+              "id": "any",
+              "message": "เคยซื้อ"
+            },
+            {
+              "id": "1wP7PYzrrIX5I9pFHCib2",
+              "message": "ไม่เคยซื้อ"
+            },
+            {
+              "id": "V2ceh0A3A8_R_Whzco9C_",
+              "message": ""
+            }
+          ]
+        },
+        "type": "idle",
+        "width": 239,
+        "height": 284,
+        "selected": false,
+        "positionAbsolute": {
+          "x": 435,
+          "y": 330
+        },
+        "dragging": false
+      },
+      {
+        "id": "rgv54_gI",
+        "position": {
+          "x": 165,
+          "y": 165
+        },
+        "data": {
+          "value": "เคยซื้อ / ไม่เคยซื้อ ?"
+        },
+        "type": "sendMessage",
+        "width": 240,
+        "height": 116,
+        "selected": false,
+        "positionAbsolute": {
+          "x": 165,
+          "y": 165
+        },
+        "dragging": false
+      },
+      {
+        "id": "start",
+        "position": {
+          "x": -155,
+          "y": 130
+        },
+        "data": {
+          "conditions": [
+            {
+              "id": "any",
+              "message": "สนใจประกัน"
+            }
+          ]
+        },
+        "type": "idle",
+        "width": 239,
+        "height": 180,
+        "selected": false,
+        "positionAbsolute": {
+          "x": -155,
+          "y": 130
+        },
+        "dragging": false
+      },
+      {
+        "id": "end",
+        "type": "idle",
+        "data": {
+          "type": "end"
+        },
+        "position": {
+          "x": 1559.0181760642424,
+          "y": 590.859539637864
+        },
+        "width": 154,
+        "height": 72,
+        "selected": false,
+        "positionAbsolute": {
+          "x": 1559.0181760642424,
+          "y": 590.859539637864
+        },
+        "dragging": false
+      }
+    ],
+    "edges": [
+      {
+        "animated": true,
+        "type": "default",
+        "source": "M4KXOxLM",
+        "sourceHandle": "any",
+        "target": "aAVXvLnI",
+        "targetHandle": null,
+        "id": "reactflow__edge-M4KXOxLMany-aAVXvLnI"
+      },
+      {
+        "animated": true,
+        "type": "default",
+        "source": "M4KXOxLM",
+        "sourceHandle": "1wP7PYzrrIX5I9pFHCib2",
+        "target": "SwYuvZ_g",
+        "targetHandle": null,
+        "id": "reactflow__edge-M4KXOxLM1wP7PYzrrIX5I9pFHCib2-SwYuvZ_g"
+      },
+      {
+        "animated": true,
+        "type": "default",
+        "source": "start",
+        "sourceHandle": "any",
+        "target": "rgv54_gI",
+        "targetHandle": null,
+        "id": "reactflow__edge-startany-rgv54_gI"
+      },
+      {
+        "animated": true,
+        "type": "default",
+        "source": "rgv54_gI",
+        "sourceHandle": "a",
+        "target": "M4KXOxLM",
+        "targetHandle": null,
+        "id": "reactflow__edge-rgv54_gIa-M4KXOxLM"
+      },
+      {
+        "animated": true,
+        "type": "default",
+        "source": "M4KXOxLM",
+        "sourceHandle": "V2ceh0A3A8_R_Whzco9C_",
+        "target": "QaC3XZI7",
+        "targetHandle": null,
+        "id": "reactflow__edge-M4KXOxLMV2ceh0A3A8_R_Whzco9C_-QaC3XZI7"
+      },
+      {
+        "animated": true,
+        "type": "default",
+        "source": "SwYuvZ_g",
+        "sourceHandle": "a",
+        "target": "r6P2oPpE",
+        "targetHandle": null,
+        "id": "reactflow__edge-SwYuvZ_ga-r6P2oPpE"
+      },
+      {
+        "animated": true,
+        "type": "default",
+        "source": "aAVXvLnI",
+        "sourceHandle": "a",
+        "target": "dFBmYEho",
+        "targetHandle": null,
+        "id": "reactflow__edge-aAVXvLnIa-dFBmYEho"
+      },
+      {
+        "animated": true,
+        "type": "default",
+        "source": "dFBmYEho",
+        "sourceHandle": "a",
+        "target": "end",
+        "targetHandle": null,
+        "id": "reactflow__edge-dFBmYEhoa-end"
+      },
+      {
+        "animated": true,
+        "type": "default",
+        "source": "r6P2oPpE",
+        "sourceHandle": "a",
+        "target": "end",
+        "targetHandle": null,
+        "id": "reactflow__edge-r6P2oPpEa-end"
+      },
+      {
+        "animated": true,
+        "type": "default",
+        "source": "QaC3XZI7",
+        "sourceHandle": "a",
+        "target": "rgv54_gI",
+        "targetHandle": null,
+        "id": "reactflow__edge-QaC3XZI7a-rgv54_gI"
+      }
+    ]
+  },
+  {
+    "id": "kdJ-sHoH",
+    "name": "ประกันภัยอื่นๆ",
+    "type": "normal",
+    "priority": 1,
+    "nodes": [
+      {
+        "id": "snzBq7dQ",
+        "position": {
+          "x": 310,
+          "y": 165
+        },
+        "data": {
+          "value": "(other insurances)"
+        },
+        "type": "sendMessage",
+        "width": 240,
+        "height": 116,
+        "selected": true,
+        "positionAbsolute": {
+          "x": 310,
+          "y": 165
+        },
+        "dragging": false
+      },
+      {
+        "id": "start",
+        "position": {
+          "x": -155,
+          "y": 130
+        },
+        "data": {
+          "conditions": [
+            {
+              "id": "any",
+              "message": "ประกันภัยอื่นๆ"
+            }
+          ]
+        },
+        "type": "idle",
+        "width": 239,
+        "height": 180,
+        "selected": false,
+        "positionAbsolute": {
+          "x": -155,
+          "y": 130
+        },
+        "dragging": false
+      },
+      {
+        "id": "end",
+        "type": "idle",
+        "data": {
+          "type": "end"
+        },
+        "position": {
+          "x": 719.0181760642424,
+          "y": 485.85953963786403
+        },
+        "width": 154,
+        "height": 72,
+        "selected": false,
+        "positionAbsolute": {
+          "x": 719.0181760642424,
+          "y": 485.85953963786403
+        },
+        "dragging": false
+      }
+    ],
+    "edges": [
+      {
+        "animated": true,
+        "type": "default",
+        "source": "start",
+        "sourceHandle": "any",
+        "target": "snzBq7dQ",
+        "targetHandle": null,
+        "id": "reactflow__edge-startany-snzBq7dQ"
+      },
+      {
+        "animated": true,
+        "type": "default",
+        "source": "snzBq7dQ",
+        "sourceHandle": "a",
+        "target": "end",
+        "targetHandle": null,
+        "id": "reactflow__edge-snzBq7dQa-end"
+      }
+    ]
+  }
+]

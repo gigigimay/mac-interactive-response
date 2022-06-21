@@ -10,10 +10,15 @@ import {
   StateSchema,
   TypegenDisabled,
 } from 'xstate'
+import { Message } from './chat'
 import { FlowConfig, NodeConfig } from './flow'
 
 export interface Context {
   session: SessionData
+}
+
+export interface MessageEvent extends AnyEventObject {
+  message: Message
 }
 
 export type StateNodeConfigType = StateNodeConfig<

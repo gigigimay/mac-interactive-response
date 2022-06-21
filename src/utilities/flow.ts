@@ -1,4 +1,9 @@
-import { FlowConfig, NodeConfig } from 'types/flow'
+import { Message } from 'types/chat'
+import {
+  EventCondition as IdleNodeCondition,
+  FlowConfig,
+  NodeConfig,
+} from 'types/flow'
 
 export const findNextNodeId = (
   currentNode: NodeConfig,
@@ -15,4 +20,13 @@ export const findNextNodeId = (
   const nextNode = edge && nodes.find((n) => n.id === edge.target)
   const target = nextNode?.id
   return target
+}
+
+// TODO: dynamic condition types
+export const isMessageEventMatchedCondition = (
+  message: Message,
+  condition: IdleNodeCondition,
+) => {
+  if (!condition.message) return true
+  return message.content?.text === condition.message
 }
