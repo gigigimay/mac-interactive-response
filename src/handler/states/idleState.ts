@@ -1,3 +1,4 @@
+import { STATE_IDS } from 'constants/state'
 import { EventCondition } from 'types/flow'
 import {
   EventType,
@@ -9,7 +10,7 @@ import { findNextNodeId, isMessageEventMatchedCondition } from 'utilities/flow'
 export const idleState: StateNodeConfigCreator = (currentNode, flowConfig) => {
   const { id, type, data } = currentNode
 
-  if (currentNode.data.type === 'end') {
+  if (id === STATE_IDS.END || data.type === 'end') {
     return {
       id: id,
       tags: [type],

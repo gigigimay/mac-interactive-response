@@ -5,6 +5,7 @@ import { SessionData } from 'session/model'
 import allFlows from 'config/flows/all.json'
 import { FlowConfig, FlowType } from 'types/flow'
 import { isMessageEventMatchedCondition } from 'utilities/flow'
+import { STATE_IDS } from 'constants/state'
 
 const flows: FlowConfig[] = allFlows
 
@@ -20,7 +21,7 @@ const groupAndSortFlows = (flows: FlowConfig[]) => {
 
 const findMatchedFlowByEvent = (flows: FlowConfig[], event: WebhookEvent) => {
   const matchedNormalFlow = flows.find((flow) => {
-    const startNode = flow.nodes.find((node) => node.id === 'start')
+    const startNode = flow.nodes.find((node) => node.id === STATE_IDS.START)
     if (!startNode) return false
     const { conditions = [] } = startNode.data
     return conditions.some((c) =>
@@ -39,7 +40,7 @@ export const getFlowEntryConfig = (
   /** (1.) normal flows */
   const matchedNormalFlow = findMatchedFlowByEvent(normalFlows, event)
   if (matchedNormalFlow) {
-    return { flowConfig: matchedNormalFlow, initialState: 'start' }
+    return { flowConfig: matchedNormalFlow, initialState: STATE_IDS.START }
   }
 
   /** (2.) continue from current flow */
@@ -48,7 +49,7 @@ export const getFlowEntryConfig = (
     if (currentFlow) {
       return {
         flowConfig: currentFlow,
-        initialState: session.stateId || 'start',
+        initialState: session.stateId || STATE_IDS.START,
       }
     }
   }
@@ -56,7 +57,7 @@ export const getFlowEntryConfig = (
   /** (3.) fallback flows */
   const matchedFallbackFlow = findMatchedFlowByEvent(fallbackFlows, event)
   if (matchedFallbackFlow) {
-    return { flowConfig: matchedFallbackFlow, initialState: 'start' }
+    return { flowConfig: matchedFallbackFlow, initialState: STATE_IDS.START }
   }
   return null
 }
