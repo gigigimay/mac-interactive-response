@@ -1,13 +1,13 @@
+import { STATE_IDS } from 'constants/state'
 import { appendNewMessageMutation } from 'schemas/chat/mutation'
 import { appSyncClient } from 'services/app-sync'
 import { UsageType } from 'types/chat'
 import { Context, StateNodeConfigCreator } from 'types/state'
 import { findNextNodeId } from 'utilities/flow'
 
-// TODO: send message to appsync
 // TODO: dynamic message type (text/flex/etc.)
 
-const sendMessage = async (ctx: Context, text: string) => {
+const invokeSendMessage = async (ctx: Context, text: string) => {
   console.time(`🍀 Message sent! "${text}"`)
   await appSyncClient.mutate({
     mutation: appendNewMessageMutation,
@@ -35,12 +35,14 @@ export const sendMessageState: StateNodeConfigCreator = (
   flowConfig,
 ) => {
   const { id, data } = currentNode
-  const next = findNextNodeId(currentNode, flowConfig)
+
+  /** default to 'end' state if can't find next node id */
+  const next = findNextNodeId(currentNode, flowConfig) || STATE_IDS.END
   return {
     id,
     invoke: {
       id: `${id}_invokation`,
-      src: (ctx) => sendMessage(ctx, data.value),
+      src: (ctx) => invokeSendMessage(ctx, data.value),
       onDone: { target: `#${next}` },
       // onError: errorTarget,
     },
