@@ -20,7 +20,7 @@ nvm use
 $ yarn
 ```
 
-- Start development server - (default exposed PORT of application is 5000)
+- Start development server - (default exposed PORT of application is 5001)
 
 ```bash
 $ docker compose up

@@ -6,7 +6,7 @@ services:
       context: '.'
       dockerfile: dev.Dockerfile
     ports:
-      - 5000:8083
+      - 5001:8083
     volumes:
       - ./src:/app/src
       - /node_modules
