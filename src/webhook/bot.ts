@@ -17,7 +17,8 @@ router.get('/', (req, res) => {
 router.post('/process', async (req, res) => {
   const { name: tenant } = getFeatures(req.query.tenant as string)
   const { chatId, to, appId: caseId } = req.body.input
-  const { owner, message, channel } = req.body.result
+  const { chatInfo, message, channel } = req.body.result
+  const { owner } = chatInfo
 
   // TODO: validate request and return 400
 
